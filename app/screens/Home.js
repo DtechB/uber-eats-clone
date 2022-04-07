@@ -4,6 +4,7 @@ import HeaderTabs from "../components/HeaderTabs";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import SearchBar from "../components/SearchBar";
+import Categories from "../components/Categories";
 
 function Home(props) {
   return (
@@ -12,6 +13,7 @@ function Home(props) {
         <HeaderTabs />
         <SearchBar />
       </View>
+      <Categories />
     </Screen>
   );
 }
