@@ -39,25 +39,22 @@ function Categories(props) {
         paddingVertical: 10,
       }}
     >
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <FlatList
-          data={items}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal
-          renderItem={({ item }) => (
-            <View style={{ marginRight: 30, alignItems: "center" }}>
-              <Image
-                source={item.image}
-                style={{ width: 40, height: 50, resizeMode: "contain" }}
-              />
-              <Text style={{ fontSize: 13, fontWeight: "700" }}>
-                {item.text}
-              </Text>
-            </View>
-          )}
-          style={{ paddingLeft: 20 }}
-        />
-      </ScrollView>
+      <FlatList
+        data={items}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        renderItem={({ item }) => (
+          <View style={{ marginRight: 30, alignItems: "center" }}>
+            <Image
+              source={item.image}
+              style={{ width: 40, height: 50, resizeMode: "contain" }}
+            />
+            <Text style={{ fontSize: 13, fontWeight: "700" }}>{item.text}</Text>
+          </View>
+        )}
+        style={{ paddingLeft: 20 }}
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 }
