@@ -13,28 +13,25 @@ function HeaderTabs(props) {
   };
 
   return (
-    <Screen>
-      <View style={styles.container}>
-        <HeaderButton
-          text="Delivery"
-          backColor={activeTab === "Delivery" ? colors.black : colors.white}
-          color={activeTab === "Delivery" ? colors.white : colors.black}
-          onPress={handlePress}
-        />
-        <HeaderButton
-          text="Pickup"
-          backColor={activeTab === "Pickup" ? colors.black : colors.white}
-          color={activeTab === "Pickup" ? colors.white : colors.black}
-          onPress={handlePress}
-        />
-      </View>
-    </Screen>
+    <View style={styles.container}>
+      <HeaderButton
+        text="Delivery"
+        backColor={activeTab === "Delivery" ? colors.black : colors.white}
+        color={activeTab === "Delivery" ? colors.white : colors.black}
+        onPress={handlePress}
+      />
+      <HeaderButton
+        text="Pickup"
+        backColor={activeTab === "Pickup" ? colors.black : colors.white}
+        color={activeTab === "Pickup" ? colors.white : colors.black}
+        onPress={handlePress}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 12,
     flexDirection: "row",
     alignSelf: "center",
   },
