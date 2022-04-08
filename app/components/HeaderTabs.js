@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
-import Screen from "./Screen";
 
-function HeaderTabs(props) {
-  const [activeTab, setActiveTab] = useState("Delivery");
-
+function HeaderTabs({ activeTab, setActiveTab }) {
   const handlePress = () => {
     activeTab === "Delivery"
       ? setActiveTab("Pickup")

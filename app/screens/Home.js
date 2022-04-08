@@ -12,6 +12,7 @@ const API_KEY =
 
 function Home(props) {
   const [resturants, setResturants] = useState([]);
+  const [activeTab, setActiveTab] = useState("Delivery");
 
   const getResturantsFromYelp = async () => {
     const response = await fetch(
@@ -24,16 +25,20 @@ function Home(props) {
       }
     );
     const json = await response.json();
-    setResturants(json.businesses);
+    setResturants(
+      json.businesses.filter((business) =>
+        business.transactions.includes(activeTab.toLowerCase())
+      )
+    );
   };
 
   useEffect(() => {
     getResturantsFromYelp();
-  }, []);
+  }, [activeTab]);
   return (
     <Screen style={styles.container}>
       <View style={styles.headerTabs}>
-        <HeaderTabs />
+        <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <SearchBar />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
