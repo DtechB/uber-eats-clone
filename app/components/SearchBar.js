@@ -9,6 +9,7 @@ function SearchBar(props) {
   return (
     <View style={styles.container}>
       <GooglePlacesAutocomplete
+        query={{ key: "AIzaSyA3HDC6kzxdkHn9wjHbsJ1vmmHYtRZjkDY" }}
         placeholder="Search"
         styles={{
           textInput: {
