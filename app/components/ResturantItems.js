@@ -8,7 +8,7 @@ function ResturantItems({ resturants }) {
       {resturants.map((resturant, index) => (
         <ResturantItem
           key={index}
-          image={resturant.image}
+          image_url={resturant.image_url}
           name={resturant.name}
           rating={resturant.rating}
         />

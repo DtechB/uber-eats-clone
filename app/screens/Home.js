@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import HeaderTabs from "../components/HeaderTabs";
 import colors from "../config/colors";
@@ -7,28 +7,29 @@ import SearchBar from "../components/SearchBar";
 import Categories from "../components/Categories";
 import ResturantItems from "../components/ResturantItems";
 
-const data = [
-  {
-    image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-    name: "Farmhouse kitchen Thi Chineese",
-    rating: 4.5,
-  },
-  {
-    image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-    name: "Farmhouse kitchen Thi Chineese",
-    rating: 4,
-  },
-  {
-    image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-    name: "Farmhouse kitchen Thi Chineese",
-    rating: 3.5,
-  },
-];
+const API_KEY =
+  "jnwUOhBB1J4uxGN9EBq9jKaR9YNh5_ZsfgL-IIhJQ5I-7k1Um1i6J-Rau7dgn4YoGp0bLAhxYINn3dYkFHIBz1P8mUYMgjb-F9x-0RrU96uo1KR1R0qVu5mfDGlPYnYx";
 
 function Home(props) {
+  const [resturants, setResturants] = useState([]);
+
+  const getResturantsFromYelp = async () => {
+    const response = await fetch(
+      `https://api.yelp.com/v3/businesses/search?term=restaurants&location=Hollywood`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    );
+    const json = await response.json();
+    setResturants(json.businesses);
+  };
+
+  useEffect(() => {
+    getResturantsFromYelp();
+  }, []);
   return (
     <Screen style={styles.container}>
       <View style={styles.headerTabs}>
@@ -37,7 +38,7 @@ function Home(props) {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <ResturantItems resturants={data} />
+        <ResturantItems resturants={resturants} />
       </ScrollView>
     </Screen>
   );

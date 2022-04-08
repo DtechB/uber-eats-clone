@@ -3,23 +3,21 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 
-function ResturantItem({ image, name, rating }) {
+function ResturantItem({ image_url, name, rating }) {
   return (
     <TouchableOpacity activeOpacity={0.9}>
       <View style={styles.container}>
-        <ResturantImage source={image} />
+        <ResturantImage image={image_url} />
         <ResturantInfo name={name} rating={rating} />
       </View>
     </TouchableOpacity>
   );
 }
 
-const ResturantImage = ({ source }) => (
+const ResturantImage = (props) => (
   <>
     <Image
-      source={{
-        uri: source,
-      }}
+      source={{ uri: props.image }}
       style={{ width: "100%", height: 180, borderRadius: 5, marginBottom: 5 }}
     />
     <TouchableOpacity style={{ position: "absolute", top: 20, right: 20 }}>
