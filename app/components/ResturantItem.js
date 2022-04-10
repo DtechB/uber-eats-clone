@@ -3,9 +3,9 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 
-function ResturantItem({ image_url, name, rating }) {
+function ResturantItem({ image_url, name, rating, onPress }) {
   return (
-    <TouchableOpacity activeOpacity={0.9}>
+    <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
       <View style={styles.container}>
         <ResturantImage image={image_url} />
         <ResturantInfo name={name} rating={rating} />

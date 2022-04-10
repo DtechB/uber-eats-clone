@@ -5,10 +5,10 @@ import About from "../components/About";
 import MenuItems from "../components/MenuItems";
 import colors from "../config/colors";
 
-function ResturantDetails(props) {
+function ResturantDetails({ route }) {
   return (
     <View style={styles.container}>
-      <About />
+      <About getRestourantFromYelp={route.params} />
       <Divider width={1.8} style={{ marginTop: 20 }} />
       <MenuItems />
     </View>

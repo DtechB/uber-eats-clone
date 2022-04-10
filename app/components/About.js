@@ -5,22 +5,24 @@ const image1 =
   "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
 
 function About({ getRestourantFromYelp }) {
-  //   const { title, price, rating, reviews, image, categories } =
-  //     getRestourantFromYelp;
+  const { name, price, rating, review_count, image, categories } =
+    getRestourantFromYelp;
 
-  //   const formatCategory = categories
-  //     .map((category) => category.title)
-  //     .join(" . ");
+  const formatCategory = categories
+    .map((category) => category.title)
+    .join(" . ");
 
-  //   const description = `${formatCategory} . ${
-  //     price ? " . " + price : ""
-  //   } . 🎫 . ${rating} . ⭐ . (${reviews}+)`;
+  const description = `${formatCategory} ${
+    price ? " . " + price : ""
+  } . 🎫 . ${rating} . ⭐ . (${review_count}+)`;
+
+  console.log(description);
 
   return (
     <View style={styles.container}>
-      <ResturantImage image={image1} />
-      <ResturantTitle name="This is demo of Resturant" />
-      <ResturantDesc desc="thi resturant . $$ . dolor . hello" />
+      <ResturantImage image={image} />
+      <ResturantTitle name={name} />
+      <ResturantDesc desc={description} />
     </View>
   );
 }
