@@ -16,8 +16,6 @@ function About({ getRestourantFromYelp }) {
     price ? " . " + price : ""
   } . 🎫 . ${rating} . ⭐ . (${review_count}+)`;
 
-  console.log(description);
-
   return (
     <View style={styles.container}>
       <ResturantImage image={image} />

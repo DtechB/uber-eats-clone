@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Divider } from "react-native-elements";
 import colors from "../config/colors";
 
@@ -68,6 +69,10 @@ function MenuItem(props) {
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
           <View style={styles.container}>
+            <BouncyCheckbox
+              iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
+              fillColor="green"
+            />
             <ItemInfo
               title={item.name}
               description="this is test for resturant description asfsafsfasfashvchasb"
@@ -88,7 +93,7 @@ function MenuItem(props) {
 }
 
 const ItemInfo = ({ title, description, price }) => (
-  <View style={{ width: 240, justifyContent: "space-evenly" }}>
+  <View style={{ width: 200, justifyContent: "space-evenly" }}>
     <Text style={{ fontSize: 18, fontWeight: "700" }}>{title}</Text>
     <Text style={{ fontSize: 15 }}>{description}</Text>
     <Text style={{ fontSize: 15, fontWeight: "700" }}>{price}</Text>
