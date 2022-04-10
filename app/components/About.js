@@ -1,13 +1,24 @@
 import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 
-const image =
+const image1 =
   "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
 
-function About(props) {
+function About({ getRestourantFromYelp }) {
+  //   const { title, price, rating, reviews, image, categories } =
+  //     getRestourantFromYelp;
+
+  //   const formatCategory = categories
+  //     .map((category) => category.title)
+  //     .join(" . ");
+
+  //   const description = `${formatCategory} . ${
+  //     price ? " . " + price : ""
+  //   } . 🎫 . ${rating} . ⭐ . (${reviews}+)`;
+
   return (
     <View style={styles.container}>
-      <ResturantImage image={image} />
+      <ResturantImage image={image1} />
       <ResturantTitle name="This is demo of Resturant" />
       <ResturantDesc desc="thi resturant . $$ . dolor . hello" />
     </View>
