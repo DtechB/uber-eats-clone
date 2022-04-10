@@ -6,6 +6,8 @@ import Screen from "../components/Screen";
 import SearchBar from "../components/SearchBar";
 import Categories from "../components/Categories";
 import ResturantItems from "../components/ResturantItems";
+import BottomTabs from "../components/BottomTabs";
+import { Divider } from "react-native-elements";
 
 const API_KEY =
   "jnwUOhBB1J4uxGN9EBq9jKaR9YNh5_ZsfgL-IIhJQ5I-7k1Um1i6J-Rau7dgn4YoGp0bLAhxYINn3dYkFHIBz1P8mUYMgjb-F9x-0RrU96uo1KR1R0qVu5mfDGlPYnYx";
@@ -45,6 +47,8 @@ function Home(props) {
         <Categories />
         <ResturantItems resturants={resturants} />
       </ScrollView>
+      <Divider width={1} />
+      <BottomTabs />
     </Screen>
   );
 }
