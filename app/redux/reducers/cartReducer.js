@@ -10,10 +10,23 @@ const slice = createSlice({
   reducers: {
     cartAdded: (state, action) => {
       let newState = { ...state };
-      newState.selectedItems = {
-        items: [...newState.selectedItems.items, action.payload],
-        resturantName: action.payload.resturantName,
-      };
+      if (action.payload.checkboxValue) {
+        newState.selectedItems = {
+          items: [...newState.selectedItems.items, action.payload],
+          resturantName: action.payload.resturantName,
+        };
+      } else {
+        console.log("first");
+        newState.selectedItems = {
+          items: [
+            ...newState.selectedItems.items.filter(
+              (item) => item.name !== action.payload.name
+            ),
+          ],
+          resturantName: action.payload.resturantName,
+        };
+      }
+      console.log(newState);
       return newState;
     },
   },

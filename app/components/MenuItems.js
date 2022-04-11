@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Divider } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import { cartAdded } from "../redux/reducers/cartReducer";
 import colors from "../config/colors";
 
 export const localRestaurants = [
@@ -61,7 +63,20 @@ export const localRestaurants = [
   },
 ];
 
-function MenuItem(props) {
+function MenuItem({ resturantName }) {
+  const dispatch = useDispatch();
+
+  const selectedItem = (item, checkboxValue) => {
+    dispatch({
+      type: cartAdded,
+      payload: {
+        ...item,
+        resturantName: resturantName,
+        checkboxValue: checkboxValue,
+      },
+    });
+  };
+
   return (
     <>
       <FlatList
@@ -72,6 +87,7 @@ function MenuItem(props) {
             <BouncyCheckbox
               iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
               fillColor="green"
+              onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
             />
             <ItemInfo
               title={item.name}

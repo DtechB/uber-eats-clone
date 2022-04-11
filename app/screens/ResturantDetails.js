@@ -6,13 +6,13 @@ import MenuItems from "../components/MenuItems";
 import ViewCart from "../components/ViewCart";
 import colors from "../config/colors";
 
-function ResturantDetails({ route }) {
+function ResturantDetails({ route, navigation }) {
   return (
     <View style={styles.container}>
       <About getRestourantFromYelp={route.params} />
       <Divider width={1.8} style={{ marginTop: 20 }} />
-      <ViewCart />
-      <MenuItems />
+      <MenuItems resturantName={route.params.name} />
+      <ViewCart navigation={navigation} resturantName={route.params.name} />
     </View>
   );
 }
