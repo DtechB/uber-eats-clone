@@ -5,7 +5,8 @@ const image1 =
   "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
 
 function About({ getRestourantFromYelp }) {
-  const { name, price, rating, review_count, image, categories } =
+  console.log(getRestourantFromYelp);
+  const { name, price, rating, review_count, image_url, categories } =
     getRestourantFromYelp;
 
   const formatCategory = categories
@@ -18,7 +19,7 @@ function About({ getRestourantFromYelp }) {
 
   return (
     <View style={styles.container}>
-      <ResturantImage image={image} />
+      <ResturantImage image={image_url} />
       <ResturantTitle name={name} />
       <ResturantDesc desc={description} />
     </View>

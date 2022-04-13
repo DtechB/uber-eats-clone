@@ -24,6 +24,7 @@ function ViewCart(props) {
     const docRef = await addDoc(collection(db, "orders"), order)
       .then(() => console.log("added"))
       .catch((error) => console.log(error));
+    setModalVisibale(false);
   };
 
   return (
