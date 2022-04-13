@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../config/colors";
 import OrderItem from "./OrderItem";
+import { db, addDoc, collection, setDoc } from "../../firebase";
 
 function ViewCart(props) {
   const [modalVisibale, setModalVisibale] = useState(false);
@@ -12,6 +13,18 @@ function ViewCart(props) {
   const total = items
     .map((item) => Number(item.price.replace("$", "")))
     .reduce((a, b) => a + b, 0);
+
+  const addOrderToFirebase = async () => {
+    const order = {
+      items: items,
+      total: total,
+      resturantName: resturantName,
+      //createdAt: FieldValue.serverTimestamp(),
+    };
+    const docRef = await addDoc(collection(db, "orders"), order)
+      .then(() => console.log("added"))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -36,7 +49,7 @@ function ViewCart(props) {
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <TouchableOpacity
                 style={styles.container}
-                onPress={() => setModalVisibale(false)}
+                onPress={() => addOrderToFirebase()}
               >
                 <Text style={styles.text}>Checkout</Text>
                 <Text style={styles.price}>{`$${total}`}</Text>
