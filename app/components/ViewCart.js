@@ -57,13 +57,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "700",
     color: colors.white,
-    marginRight: 60,
+    marginRight: 20,
   },
   price: {
     color: colors.white,
     position: "absolute",
     right: 20,
     bottom: 18,
+    fontSize: 16,
   },
 });
 

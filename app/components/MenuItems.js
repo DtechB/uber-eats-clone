@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, Image, FlatList } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Divider } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartAdded } from "../redux/reducers/cartReducer";
 import colors from "../config/colors";
 
@@ -77,6 +77,14 @@ function MenuItem({ resturantName }) {
     });
   };
 
+  const cartItems = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  );
+
+  const isFoodInCart = (food, cartItems) => {
+    return Boolean(cartItems.find((item) => item.name === food.name));
+  };
+
   return (
     <>
       <FlatList
@@ -88,6 +96,7 @@ function MenuItem({ resturantName }) {
               iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
               fillColor="green"
               onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
+              isChecked={isFoodInCart(item, cartItems)}
             />
             <ItemInfo
               title={item.name}
