@@ -3,9 +3,9 @@ import { View, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
 import { useSelector } from "react-redux";
 import colors from "../config/colors";
 import OrderItem from "./OrderItem";
-import { db, addDoc, collection, setDoc } from "../../firebase";
+import { db, addDoc, collection, serverTimestamp } from "../../firebase";
 
-function ViewCart(props) {
+function ViewCart({ navigation }) {
   const [modalVisibale, setModalVisibale] = useState(false);
   const { items, resturantName } = useSelector(
     (state) => state.cartReducer.selectedItems
@@ -19,12 +19,14 @@ function ViewCart(props) {
       items: items,
       total: total,
       resturantName: resturantName,
-      //createdAt: FieldValue.serverTimestamp(),
+      createdAt: serverTimestamp(),
     };
-    const docRef = await addDoc(collection(db, "orders"), order)
-      .then(() => console.log("added"))
+    await addDoc(collection(db, "orders"), order)
+      .then(() => {
+        setModalVisibale(false);
+        navigation.navigate("OrderCompleted");
+      })
       .catch((error) => console.log(error));
-    setModalVisibale(false);
   };
 
   return (

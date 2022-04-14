@@ -5,7 +5,6 @@ const image1 =
   "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg";
 
 function About({ getRestourantFromYelp }) {
-  console.log(getRestourantFromYelp);
   const { name, price, rating, review_count, image_url, categories } =
     getRestourantFromYelp;
 

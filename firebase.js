@@ -2,10 +2,12 @@ import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   collection,
-  getDoc,
-  setDoc,
+  getDocs,
   addDoc,
-  FieldValue,
+  query,
+  serverTimestamp,
+  orderBy,
+  limit,
 } from "firebase/firestore/lite";
 
 // Your web app's Firebase configuration
@@ -23,4 +25,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { db, collection, getDoc, setDoc, addDoc, FieldValue };
+export {
+  db,
+  collection,
+  getDocs,
+  addDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+  limit,
+};

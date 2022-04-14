@@ -60,7 +60,7 @@ export const localRestaurants = [
   },
 ];
 
-function MenuItem({ resturantName }) {
+function MenuItem({ resturantName, foods, hideCheckbox = true, marginLeft }) {
   const dispatch = useDispatch();
 
   const selectedItem = (item, checkboxValue) => {
@@ -85,16 +85,18 @@ function MenuItem({ resturantName }) {
   return (
     <>
       <FlatList
-        data={localRestaurants}
+        data={foods}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
           <View style={styles.container}>
-            <BouncyCheckbox
-              iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
-              fillColor="green"
-              onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
-              isChecked={isFoodInCart(item, cartItems)}
-            />
+            {hideCheckbox && (
+              <BouncyCheckbox
+                iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
+                fillColor="green"
+                onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
+                isChecked={isFoodInCart(item, cartItems)}
+              />
+            )}
             <ItemInfo
               title={item.name}
               description={item.description}
