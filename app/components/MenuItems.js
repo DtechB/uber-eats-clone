@@ -83,36 +83,34 @@ function MenuItem({ resturantName, foods, hideCheckbox = true, marginLeft }) {
   };
 
   return (
-    <>
-      <FlatList
-        data={foods}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <View style={styles.container}>
-            {hideCheckbox && (
-              <BouncyCheckbox
-                iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
-                fillColor="green"
-                onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
-                isChecked={isFoodInCart(item, cartItems)}
-              />
-            )}
-            <ItemInfo
-              title={item.name}
-              description={item.description}
-              price={item.price}
+    <FlatList
+      data={foods}
+      keyExtractor={(item) => item.name}
+      renderItem={({ item }) => (
+        <View style={styles.container}>
+          {hideCheckbox && (
+            <BouncyCheckbox
+              iconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
+              fillColor="green"
+              onPress={(checkboxValue) => selectedItem(item, checkboxValue)}
+              isChecked={isFoodInCart(item, cartItems)}
             />
-            <Image
-              source={{ uri: item.image }}
-              style={{ width: 100, height: 100, borderRadius: 10 }}
-            />
-          </View>
-        )}
-        showsVerticalScrollIndicator={false}
-        style={{ marginBottom: 20 }}
-        ItemSeparatorComponent={() => <Divider width={1} color={colors.gray} />}
-      />
-    </>
+          )}
+          <ItemInfo
+            title={item.name}
+            description={item.description}
+            price={item.price}
+          />
+          <Image
+            source={{ uri: item.image }}
+            style={{ width: 100, height: 100, borderRadius: 10 }}
+          />
+        </View>
+      )}
+      showsVerticalScrollIndicator={false}
+      style={{ marginBottom: 30 }}
+      ItemSeparatorComponent={() => <Divider width={1} color={colors.gray} />}
+    />
   );
 }
 

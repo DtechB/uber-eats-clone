@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import AnimatedLottieView from "lottie-react-native";
 
@@ -9,7 +9,7 @@ import { db, query, orderBy, collection, getDocs, limit } from "../../firebase";
 import MenuItem from "../components/MenuItems";
 
 function OrderCompleted(props) {
-  const [lastOrder, setLastOrder] = useState(null);
+  const [lastOrder, setLastOrder] = useState();
   const { items, resturantName } = useSelector(
     (state) => state.cartReducer.selectedItems
   );
@@ -55,14 +55,18 @@ function OrderCompleted(props) {
         >
           Your order at {resturantName} has been placed for ${total} 🚀
         </Text>
-        <MenuItem
-          resturantName={lastOrder.resturantName}
-          foods={lastOrder.items}
-          hideCheckbox={false}
-        />
+        {lastOrder && (
+          <View style={{ height: 450 }}>
+            <MenuItem
+              resturantName={lastOrder.resturantName}
+              foods={lastOrder.items}
+              hideCheckbox={false}
+            />
+          </View>
+        )}
         <AnimatedLottieView
           source={require("../assets/animations/cooking.json")}
-          style={{ alignSelf: "center", height: 200 }}
+          style={{ alignSelf: "center", height: 120 }}
           autoPlay
           speed={0.5}
         />
