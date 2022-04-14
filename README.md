@@ -8,7 +8,6 @@
 <div style="display:flex; align-items: center; justify-content:space-between" align="center">
   <img src="PreviewImages/Screenshot_2022-04-14-18-18-59-902_host.exp.exponent.jpg" width="320px" />
   <img src="PreviewImages/Screenshot_2022-04-13-16-27-27-800_host.exp.exponent.jpg" width="320px" />
-  <img src="PreviewImages/Screenshot_2022-04-14-18-22-22-877_host.exp.exponent.jpg" width="320px" />
   <img src="PreviewImages/Screenshot_2022-04-14-18-17-49-227_host.exp.exponent.jpg" width="320px" />
   <img src="PreviewImages/Screenshot_2022-04-14-18-17-59-676_host.exp.exponent.jpg" width="320px" />
 </div>
@@ -17,7 +16,7 @@
 
 ```
 git clone https://github.com/DtechB/uber-eats-clone.git
-cd meditation
+cd uber-eats-clone
 ```
 
 ```
